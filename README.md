@@ -127,6 +127,7 @@ Pour exécuter cette application, suivez ces étapes :
 Cloner le projet :
 git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp-docker.git
 cd myflaskapp-docker
+Rabeb Kaabi 
 Construction de l'image Docker :
 Assurez-vous que Docker Desktop est installé et fonctionne sur votre machine. Ensuite, exécutez la commande suivante pour construire l'image Docker :
 docker build -t myflaskapp .
