@@ -1,0 +1,9 @@
+setup.py
+myflaskapp/__init__.py
+myflaskapp/app.py
+myflaskapp/main.py
+myflaskapp.egg-info/PKG-INFO
+myflaskapp.egg-info/SOURCES.txt
+myflaskapp.egg-info/dependency_links.txt
+myflaskapp.egg-info/entry_points.txt
+myflaskapp.egg-info/top_level.txt

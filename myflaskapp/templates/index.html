@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Molecule Prediction</title>
+</head>
+<body>
+    <h3>Molecule Prediction</h3>
+
+    <div>
+        <p>Enter a SMILES string to predict:</p>
+        <input type="text" id="smiles-input">
+        <button id="predict-button">Predict</button>
+    </div>
+
+    <div>
+        <p>Prediction Results:</p>
+        <p>Model 1 Prediction: <span id="prediction-model1">-</span></p>
+        <p>Model 2 Prediction: <span id="prediction-model2">-</span></p>
+    </div>
+
+    <script>
+        const predictButton = document.getElementById('predict-button');
+        const smilesInput = document.getElementById('smiles-input');
+        const predictionModel1 = document.getElementById('prediction-model1');
+        const predictionModel2 = document.getElementById('prediction-model2');
+
+        predictButton.addEventListener('click', () => {
+            const smile = smilesInput.value;
+
+            // Send a POST request to /predict with the SMILES string
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 'smile': smile })
+            })
+            .then(response => response.json())
+            .then(data => {
+                predictionModel1.textContent = data.prediction_model1;
+                predictionModel2.textContent = data.prediction_model2;
+            });
+        });
+    </script>
+</body>
+</html>
