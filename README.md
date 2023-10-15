@@ -91,6 +91,7 @@ Personnalisez l'interface utilisateur HTML en modifiant le fichier de modèle in
 Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fonction de vos besoins spécifiques.
 
 III. MyFlaskApp - Packaging avec setup.py
+
 Ce projet a été structuré pour être installable via setup.py, ce qui permet d'associer des commandes spécifiques au projet.
 Installation
 Cloner le projet :
