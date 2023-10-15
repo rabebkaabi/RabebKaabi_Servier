@@ -1,33 +1,33 @@
 # RabebKaabi_Servier
-# RabebKaabi_Servier
-I. Modèle 
 
+I. Modèle 
 main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
 Objectif
 Le script a les objectifs suivants :
 
 1. Entraînement de Modèle1 :
 
-Charge un ensemble de données à partir d'un fichier CSV.
-Extrait des caractéristiques à partir de chaînes SMILES en utilisant RDKit.
-Divise l'ensemble de données en ensembles d'entraînement, de validation et de test.
-Définit et entraîne Modèle1, qui est un modèle de réseau neuronal.
-Évalue le Modèle1 entraîné.
-Sauvegarde le Modèle1 entraîné dans un fichier.
+-Charge un ensemble de données à partir d'un fichier CSV.
+-Extrait des caractéristiques à partir de chaînes SMILES en utilisant RDKit.
+-Divise l'ensemble de données en ensembles d'entraînement, de validation et de test.
+-Définit et entraîne Modèle1, qui est un modèle de réseau neuronal.
+-Évalue le Modèle1 entraîné.
+-Sauvegarde le Modèle1 entraîné dans un fichier.
+
 2. Entraînement de Modèle2 :
 
-Convertit les chaînes SMILES en séquences d'entrée encodées en one-hot.
-Divise l'ensemble de données en ensembles d'entraînement, de validation et de test.
-Définit et entraîne Modèle2, qui est un modèle basé sur LSTM.
-Évalue le Modèle2 entraîné.
-Sauvegarde le Modèle2 entraîné dans un fichier.
-Exécution de l'Application Flask :
+-Convertit les chaînes SMILES en séquences d'entrée encodées en one-hot.
+-Divise l'ensemble de données en ensembles d'entraînement, de validation et de test.
+-Définit et entraîne Modèle2, qui est un modèle basé sur LSTM.
+-Évalue le Modèle2 entraîné.
+-Sauvegarde le Modèle2 entraîné dans un fichier.
+-Exécution de l'Application Flask :
 
 Le script est exécuté en tant que partie de l'application Flask, rendant les modèles entraînés disponibles pour des prédictions via des points d'API.
-Utilisation
+Utilisation: 
+
 Pour utiliser ce script, suivez ces étapes :
 Préparation des Données :
-
 Préparez l' ensemble de données dans un fichier CSV (par exemple, dataset_single.csv).
 Assurez-vous que le fichier CSV contient les colonnes nécessaires (par exemple, 'smiles' et 'P1').
 Entraînement de Modèle1 :
