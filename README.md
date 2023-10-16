@@ -83,16 +83,11 @@ Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fon
 # III. MyFlaskApp - Packaging avec setup.py
 
 Ce projet a été structuré pour être installable via setup.py, ce qui permet d'associer des commandes spécifiques au projet.
-Installation
-Cloner le projet :
-Some basic Git commands are:
+
 ```
-git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
-```
-cd myflaskapp
 Installation avec setup.py :
 Pour installer l'application, exécutez la commande suivante à partir du répertoire du projet :
-pip install .
+
 Cela installera l'application localement.
 ##Commandes
 Le setup.py inclut des commandes personnalisées pour effectuer diverses actions liées à l'application Flask.
@@ -102,6 +97,12 @@ servier train <vos arguments>
 Évaluation du Modèle
 Pour évaluer un modèle, utilisez la commande suivante :
 servier evaluate <vos arguments>
+Installation
+Some basic Git commands are:
+```
+git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
+cd myflaskapp
+pip install .
 Prédiction
 Pour effectuer des prédictions, utilisez la commande suivante :
 servier predict <vos arguments>
