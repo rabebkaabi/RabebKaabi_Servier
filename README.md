@@ -1,5 +1,5 @@
 # RabebKaabi_Servier
-
+![Prédiction des propriétés d'une molécule de médicament]([https://myoctocat.com/assets/images/base-octocat.svg](https://www.futura-sciences.com/sciences/definitions/chimie-molecule-783/))
 # I. Modèle 
 main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
 Objectif
