@@ -85,7 +85,10 @@ Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fon
 Ce projet a été structuré pour être installable via setup.py, ce qui permet d'associer des commandes spécifiques au projet.
 Installation
 Cloner le projet :
+Some basic Git commands are:
+```
 git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
+```
 cd myflaskapp
 Installation avec setup.py :
 Pour installer l'application, exécutez la commande suivante à partir du répertoire du projet :
