@@ -83,8 +83,6 @@ Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fon
 # III. MyFlaskApp - Packaging avec setup.py
 
 Ce projet a été structuré pour être installable via setup.py, ce qui permet d'associer des commandes spécifiques au projet.
-
-```
 Installation avec setup.py :
 Pour installer l'application, exécutez la commande suivante à partir du répertoire du projet :
 
@@ -98,7 +96,6 @@ servier train <vos arguments>
 Pour évaluer un modèle, utilisez la commande suivante :
 servier evaluate <vos arguments>
 Installation
-Some basic Git commands are:
 ```
 git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
 cd myflaskapp
@@ -121,8 +118,10 @@ dataset/: Répertoire destiné à stocker les données d'entrée
 Installation et Utilisation
 Pour exécuter cette application, suivez ces étapes :
 Cloner le projet :
+```
 git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp-docker.git
 cd myflaskapp-docker
+```
 Rabeb Kaabi 
 Construction de l'image Docker :
 Assurez-vous que Docker Desktop est installé et fonctionne sur votre machine. Ensuite, exécutez la commande suivante pour construire l'image Docker :
