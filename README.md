@@ -103,6 +103,7 @@ Some basic Git commands are:
 git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
 cd myflaskapp
 pip install .
+```
 Prédiction
 Pour effectuer des prédictions, utilisez la commande suivante :
 servier predict <vos arguments>
