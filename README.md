@@ -1,11 +1,11 @@
 # RabebKaabi_Servier
 
-#I. Modèle 
+# I. Modèle 
 main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
 Objectif
 Le script a les objectifs suivants :
 
-##1. Entraînement de Modèle1 :
+## 1. Entraînement de Modèle1 :
 
 -Charge un ensemble de données à partir d'un fichier CSV.
 -Extrait des caractéristiques à partir de chaînes SMILES en utilisant RDKit.
@@ -14,7 +14,7 @@ Le script a les objectifs suivants :
 -Évalue le Modèle1 entraîné.
 -Sauvegarde le Modèle1 entraîné dans un fichier.
 
-##2. Entraînement de Modèle2 :
+## 2. Entraînement de Modèle2 :
 
 -Convertit les chaînes SMILES en séquences d'entrée encodées en one-hot.
 -Divise l'ensemble de données en ensembles d'entraînement, de validation et de test.
@@ -23,7 +23,7 @@ Le script a les objectifs suivants :
 -Sauvegarde le Modèle2 entraîné dans un fichier.
 -Exécution de l'Application Flask :
 Le script est exécuté en tant que partie de l'application Flask, rendant les modèles entraînés disponibles pour des prédictions via des points d'API.
-##3.Utilisation: 
+## 3.Utilisation: 
 Pour utiliser ce script, suivez ces étapes :
 Préparation des Données :
 Préparez l' ensemble de données dans un fichier CSV (par exemple, dataset_single.csv).
@@ -35,7 +35,7 @@ Entraînement de Modèle2 :
 Entraînez Modèle2 en utilisant des séquences encodées en one-hot de chaînes SMILES.
 Modifiez les hyperparamètres ou l'architecture du modèle selon vos besoins dans le script.
 
-#II. Exécution de l'Application Flask :
+# II. Exécution de l'Application Flask :
 
 Le script fait partie de l'application Flask. Exécutez l'application Flask pour fournir des points d'API pour effectuer des prédictions à l'aide des modèles entraînés.
 Accédez à l'application Flask à http://localhost:5000.
@@ -46,10 +46,10 @@ Assurez-vous d'avoir toutes les dépendances nécessaires installées pour exéc
 MyFlaskApp - Application Flask pour les Prédictions Moléculaires
 Le script app.py fait partie du projet MyFlaskApp et est responsable de l'application Flask pour effectuer des prédictions moléculaires en utilisant deux modèles de machine learning (Modèle1 et Modèle2). 
 
-##1.Objectif
+## 1.Objectif
 L'objectif du script app.py est de fournir une interface web permettant aux utilisateurs de soumettre des chaînes SMILES de molécules et d'obtenir des prédictions à l'aide de deux modèles de machine learning (Modèle1 et Modèle2). Les prédictions sont renvoyées sous forme de réponses JSON.
 
-##2. Fonctionnement
+## 2. Fonctionnement
 Le script fonctionne de la manière suivante :
 ###Chargement des Modèles de Machine Learning :
 Les modèles de machine learning, Modèle1 et Modèle2, sont chargés à partir des fichiers 'model1.h5' et 'model2.h5'.
@@ -80,7 +80,7 @@ Personnalisez les fonctions make_prediction1 et make_prediction2 pour adapter le
 Personnalisez l'interface utilisateur HTML en modifiant le fichier de modèle index.html .
 Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fonction de vos besoins spécifiques.
 
-#III. MyFlaskApp - Packaging avec setup.py
+# III. MyFlaskApp - Packaging avec setup.py
 
 Ce projet a été structuré pour être installable via setup.py, ce qui permet d'associer des commandes spécifiques au projet.
 Installation
@@ -103,7 +103,7 @@ Prédiction
 Pour effectuer des prédictions, utilisez la commande suivante :
 servier predict <vos arguments>
 
-#IV. MyFlaskApp - Déploiement avec Docker
+# IV. MyFlaskApp - Déploiement avec Docker
 Ce projet est une application Flask qui utilise Docker pour faciliter le déploiement. Il inclut un modèle de machine learning, un service Web Flask, et un Dockerfile pour créer une image Docker.
 Contenu du Projet
 Le projet est structuré comme suit :
