@@ -3,10 +3,14 @@ import tensorflow as tf
 import numpy as np
 from rdkit.Chem import rdMolDescriptors, MolFromSmiles, rdmolfiles, rdmolops
 from tensorflow.keras.models import load_model
-import tensorflow as tf
 import json
+import logging
 
 app = Flask(__name__)
+
+# Configure the logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Load your machine learning models
 model1 = load_model('models/model1.h5')
@@ -48,6 +52,7 @@ def make_prediction2(smile):
     encoded_smiles = preprocess_smiles(smile, 50, 30)
     prediction = model2.predict(np.array([encoded_smiles]))
     return float(prediction[0][0])  # Convert to float
+
 # Add your 'serve' function here
 def serve():
     app.run(debug=True)
@@ -66,19 +71,19 @@ def predict():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            app.logger.info(f"Received data: {data}")
+            logger.info(f"Received data: {data}")
             smile = data['smile']
-            app.logger.info(f"SMILE: {smile}")
+            logger.info(f"SMILE: {smile}")
 
             # Add prediction code here
             prediction1 = make_prediction1(smile)  # Replace with your actual prediction code
             prediction2 = make_prediction2(smile)  # Replace with your actual prediction code
-            app.logger.info(f"Prediction (Model 1): {prediction1}")
-            app.logger.info(f"Prediction (Model 2): {prediction2}")
+            logger.info(f"Prediction (Model 1): {prediction1}")
+            logger.info(f"Prediction (Model 2): {prediction2}")
 
             return jsonify({'prediction_model1': prediction1, 'prediction_model2': prediction2})
         except Exception as e:
-            app.logger.error(f"Error: {str(e)}")
+            logger.error(f"Error: {str(e)}")
             return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
