@@ -20,7 +20,7 @@ def fingerprint_features(smile_string, radius=2, size=2048):
                                                           )
 
 # Load the dataset
-data = pd.read_csv('C:/Users/natan/Desktop/test/dataset_single.csv')
+data = pd.read_csv('data/dataset_single.csv')
 
 # Extract features for each molecule
 data['features'] = data['smiles'].apply(fingerprint_features)
