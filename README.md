@@ -1,7 +1,7 @@
 # RabebKaabi_Servier
 La prédiction des propriétés d'une molécule de médicament joue un rôle important dans le processus de conception de médicaments. Les propriétés de la molécule sont la cause de l'échec de 60% des médicaments en phase clinique.Une optimisation multi paramètres utilisant des méthodes d'apprentissage automatique peut être utilisée pour choisir une molécule optimisée qui sera soumise à des études plus approfondies et qui permettra d'éviter que la molécule ne devienne un médicament.
 à soumettre à des études plus approfondies et d'éviter tout échec en phase clinique.
-![Prédiction des propriétés d'une molécule de médicament]([https://myoctocat.com/assets/images/base-octocat.svg](https://www.futura-sciences.com/sciences/definitions/chimie-molecule-783/)
+![Prédiction des propriétés d'une molécule de médicament]([https://myoctocat.com/assets/images/base-octocat.svg]([https://www.futura-sciences.com/sciences/definitions/chimie-molecule-783/](https://www.futura-sciences.com/sciences/definitions/chimie-molecule-783/)
 # I. Modèle 
 main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
 Objectif
