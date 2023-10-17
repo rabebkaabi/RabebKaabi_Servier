@@ -104,8 +104,8 @@ Pour évaluer un modèle, utilisez la commande suivante :
 servier evaluate <vos arguments>
 Installation
 ```
-git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
-cd myflaskapp
+git clone https://github.com/rabebkaabi/RabebKaabi_Servier.git
+cd RabebKaabi_Servier
 pip install .
 ```
 Prédiction
