@@ -149,7 +149,7 @@ COPY . /app/
 Construction de l'image Docker :
 Assurez-vous que Docker Desktop est installé et fonctionne sur votre machine. Ensuite, exécutez la commande suivante pour construire l'image Docker :
 ```
-docker build -t servier
+docker build -t servier .
 ```
 Exécution du conteneur Docker :
 Une fois l'image Docker créée, vous pouvez exécuter un conteneur Docker à partir de l'image :
