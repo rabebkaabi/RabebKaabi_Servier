@@ -124,15 +124,31 @@ models/: Répertoire contenant les modèles de machine learning.
 dataset/: Répertoire destiné à stocker les données d'entrée
 Installation et Utilisation
 Pour exécuter cette application, suivez ces étapes :
-Cloner le projet :
+Crée requirements.txt :
 ```
-git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp-docker.git
-cd myflaskapp-docker
+pip freeze > requirements.txt
+pip install -r requirements.txt
 ```
-Rabeb Kaabi 
+Création de dockrfile sans extension dans le meme path que l'application :
+```
+# Utilisez une image de base Python
+FROM python:3.8
+
+# Copiez le fichier requirements.txt dans le conteneur
+COPY requirements.txt /app/
+
+# Définissez le répertoire de travail
+WORKDIR /app
+
+# Installez les dépendances à partir du fichier requirements.txt
+RUN pip install -r requirements.txt
+
+# Copiez tout le code source de votre application dans le conteneur
+COPY . /app/
+```
 Construction de l'image Docker :
 Assurez-vous que Docker Desktop est installé et fonctionne sur votre machine. Ensuite, exécutez la commande suivante pour construire l'image Docker :
-docker build -t myflaskapp .
+docker build -t servier
 Exécution du conteneur Docker :
 Une fois l'image Docker créée, vous pouvez exécuter un conteneur Docker à partir de l'image :
 docker run -p 5000:5000 -v /chemin/vers/data:/app/data myflaskapp
