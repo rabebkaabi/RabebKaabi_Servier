@@ -4,6 +4,9 @@ La prédiction des propriétés d'une molécule de médicament joue un rôle imp
 ![Prédiction des propriétés d'une molécule de médicament.](https://fr.vikidia.org/wiki/Mol%C3%A9cule#/media/Fichier:Glucose.PNG)
 # I. Modèle 
 main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
+```
+python main.py
+```
 Objectif
 Le script a les objectifs suivants :
 
@@ -38,7 +41,9 @@ Entraînez Modèle2 en utilisant des séquences encodées en one-hot de chaînes
 Modifiez les hyperparamètres ou l'architecture du modèle selon vos besoins dans le script.
 
 # II. Exécution de l'Application Flask :
-
+```
+python app.py
+```
 Le script fait partie de l'application Flask. Exécutez l'application Flask pour fournir des points d'API pour effectuer des prédictions à l'aide des modèles entraînés.
 Accédez à l'application Flask à http://localhost:5000.
 Informations Supplémentaires
@@ -130,4 +135,4 @@ Assurez-vous que Docker Desktop est installé et fonctionne sur votre machine. E
 docker build -t myflaskapp .
 Exécution du conteneur Docker :
 Une fois l'image Docker créée, vous pouvez exécuter un conteneur Docker à partir de l'image :
-docker run -p 5000:5000 -v /chemin/vers/votre/dataset:/app/dataset myflaskapp
+docker run -p 5000:5000 -v /chemin/vers/data:/app/data myflaskapp
