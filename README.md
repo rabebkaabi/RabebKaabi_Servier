@@ -3,7 +3,7 @@ La prédiction des propriétés d'une molécule de médicament joue un rôle imp
 à soumettre à des études plus approfondies et d'éviter tout échec en phase clinique.
 ![Prédiction des propriétés d'une molécule de médicament.](https://fr.vikidia.org/wiki/Mol%C3%A9cule#/media/Fichier:Glucose.PNG)
 # I. Modèle 
-main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 et Modèle2) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
+main.py, fait partie du projet MyFlaskApp et est responsable de l'entraînement et de l'exécution de deux modèles différents (Modèle1 Modèle 2et Modèle3) pour une application d'apprentissage automatique. Ce README donne un aperçu du script et comment l'utiliser.
 Objectif
 Le script a les objectifs suivants :
 
@@ -22,7 +22,7 @@ model1 = keras.Sequential([
     layers.Dense(64, activation='relu'),
     layers.Dense(1, activation='sigmoid')
 ])
-Ce modèle est entrainé sur data/single_dataset
+Ce modèle est entrainé sur myflaskapp/data/single_dataset.csv
 Entrèe : Le modèle prend en entrée un vecteur de forme (2048,)(les caractéristiques extraites de chaque molécule ont une longueur de 2048) . Ces caractéristiques sont extraites à l'aide de la méthode Morgan Fingerprint, qui est  utilisée pour la représentation des molécules.
 
  Le modèle utilise une architecture simple avec une couche dense de 64 unités suivie d'une couche de sortie avec une seule unité (car il s'agit d'une tâche de classification binaire: la prédiction d'une propriété binaire). La fonction d'activation utilisée dans la couche dense est ReLU  pour introduire de la non-linéarité, et la dernière couche utilise une activation sigmoïde pour la classification binaire.
@@ -38,7 +38,7 @@ Le modèle est compilé avec l'optimiseur Adam et la perte binaire_crossentropy.
 -Exécution de l'Application Flask :
 Le script est exécuté en tant que partie de l'application Flask, rendant les modèles entraînés disponibles pour des prédictions via des points d'API.
 Modèle 2 :
-Ce modèle est entrainé sur data/single_dataset
+Ce modèle est entrainé sur myflaskapp/data/single_dataset.csv
 model2 = keras.Sequential([
     layers.Input(shape=(YOUR_INPUT_SHAPE, YOUR_VOCAB_SIZE)),
     layers.LSTM(64),
@@ -60,7 +60,7 @@ model3 = keras.Sequential([
     layers.Dense(1, activation='sigmoid')
 ])
 
-Ce modèle est entrainé sur data/multi_dataset
+Ce modèle est entrainé sur myflaskapp/data/multi_dataset.csv
 Chaque modèle dans l'ensemble "Modèle 3" suit une architecture similaire à celle du "Modèle 1", avec une seule unité de sortie utilisant une activation sigmoïde. Cela signifie que chaque modèle génère une prédiction binaire indépendante pour sa propriété respective.
 Le modèle 3  est entraîné pour chaque propriété de molécule individuelle (P1, P2, etc.), ce qui signifie qu'il y a un modèle distinct pour chaque propriété.Le modèle est compilé pour la classification binaire, ce qui suggère que chaque modèle de propriété est formé pour prédire une propriété binaire spécifique.
 
@@ -110,8 +110,7 @@ Test loss pour P8: 0.7224
 Test accuracy pour P8: 0.8053
 Test loss pour P9: 0.7178
 Test accuracy pour P9: 0.8213
-La justification pour choisir le meilleur modèle dépendra de l'importance relative de la précision par rapport à la perte:
-
+Le choix du meilleur modèle dépendra de l'importance relative de la précision par rapport à la perte:
 Si on privilégie la précision, alors Modèle 3 pour la Propriété P5 est le meilleur avec une précision de 0.8293, suivie de Modèle 2 avec une précision de 0.7907. Modèle 3 pour P5 a la meilleure précision globale.
 
 Si on accorde de l'importance à la perte de test (plus faible est meilleure), Modèle 2 a la plus faible perte de test générale, suivie de Modèle 3 pour P5. Cela signifie que Modèle 2 produit des prédictions globalement plus proches des étiquettes de test.
@@ -120,48 +119,35 @@ Si on cherche un équilibre entre la précision et la perte de test, alors Modè
 
 # II. Exécution de l'Application Flask :
 
-Le script fait partie de l'application Flask. Exécutez l'application Flask pour fournir des points d'API pour effectuer des prédictions à l'aide des modèles entraînés.
+Le script fait partie de l'application Flask. Exécutez l'application Flask pour fournir des points d'API pour effectuer des prédictions à l'aide des modèles entraînés
+python app.py 
+
 Accédez à l'application Flask à http://localhost:5000.
 Informations Supplémentaires
-Le script suppose une forme d'entrée spécifique et une taille de vocabulaire pour Modèle2. Modifiez ces constantes (YOUR_INPUT_SHAPE=50 et YOUR_VOCAB_SIZE=30) en fonction de votre ensemble de données.
-Les modèles entraînés sont sauvegardés dans des fichiers nommés 'model1.h5' et 'model2.h5'. Ces fichiers peuvent être chargés et utilisés dans l'application Flask.
-Assurez-vous d'avoir toutes les dépendances nécessaires installées pour exécuter le script avec succès, y compris RDKit, TensorFlow et RDKit.
+Le script suppose une forme d'entrée spécifique et une taille de vocabulaire pour Modèle2. Modifiez ces constantes (50 et 30) en fonction de votre ensemble de données.
+Les modèles entraînés sont sauvegardés dans des fichiers nommés 'model1.h5' , 'model2.h5' et 'model3.h5' . Ces fichiers peuvent être chargés et utilisés dans l'application Flask.
+Assurez-vous d'avoir toutes les dépendances nécessaires installées pour exécuter le script avec succès, y compris  TensorFlow et RDKit.
 MyFlaskApp - Application Flask pour les Prédictions Moléculaires
-Le script app.py fait partie du projet MyFlaskApp et est responsable de l'application Flask pour effectuer des prédictions moléculaires en utilisant deux modèles de machine learning (Modèle1 et Modèle2). 
+Le script app.py fait partie du projet MyFlaskApp et est responsable de l'application Flask pour effectuer des prédictions moléculaires en utilisant 3 modèles de machine learning (Modèle1  Modèle2 et Modèle 3). 
 
 ## 1.Objectif
-L'objectif du script app.py est de fournir une interface web permettant aux utilisateurs de soumettre des chaînes SMILES de molécules et d'obtenir des prédictions à l'aide de deux modèles de machine learning (Modèle1 et Modèle2). Les prédictions sont renvoyées sous forme de réponses JSON.
+L'objectif du script app.py est de fournir une interface web permettant aux utilisateurs de soumettre des chaînes SMILES de molécules et d'obtenir des prédictions à l'aide de deux modèles de machine learning (Modèle1 et Modèle2,Modèle 3). Les prédictions sont renvoyées sous forme de réponses JSON.
 
 ## 2. Fonctionnement
 Le script fonctionne de la manière suivante :
 ###Chargement des Modèles de Machine Learning :
-Les modèles de machine learning, Modèle1 et Modèle2, sont chargés à partir des fichiers 'model1.h5' et 'model2.h5'.
+Les modèles de machine learning, Modèle1 Modèle 23et Modèle2, sont chargés à partir des fichiers 'model1.h5'  'model2.h5'et 'model3.h5'.
 ###Extraction de Caractéristiques SMILES :
 Une fonction est définie pour extraire des caractéristiques à partir de chaînes SMILES en utilisant RDKit. Ces caractéristiques sont nécessaires pour les prédictions.
 ###Prétraitement des Chaînes SMILES :
 Une fonction est définie pour prétraiter les chaînes SMILES en encodant en one-hot. Cela est nécessaire pour Modèle2.
 ###Fonctions de Prédiction :
-Deux fonctions, make_prediction1 et make_prediction2, sont définies pour faire des prédictions en utilisant Modèle1 et Modèle2 respectivement. Vous devez personnaliser ces fonctions selon vos besoins.
+3 fonctions, make_prediction1 make_prediction2, et make_prediction3, sont définies pour faire des prédictions en utilisant Modèle1 Modèle 2 et Modèle3 respectivement. Vous devez personnaliser ces fonctions selon vos besoins.
 ###Endpoints Flask :
 L'application Flask définit deux endpoints :
 / : Renvoie la page d'accueil avec un formulaire pour soumettre des chaînes SMILES.
 /predict : Accepte les chaînes SMILES soumises en tant que données JSON, effectue des prédictions en utilisant les modèles, et renvoie les prédictions sous forme de réponses JSON.
-###Exécution de l'Application :
-L'application est exécutée localement et peut être accédée à l'adresse http://localhost:5000 dans un navigateur.
-###Utilisation
-Pour utiliser cette application Flask, suivez ces étapes :
-Chargement des Modèles :
-Assurez-vous que les modèles de machine learning, Modèle1 et Modèle2, sont disponibles dans des fichiers 'model1.h5' et 'model2.h5'. Placez ces fichiers dans le répertoire models/ du projet.
-Exécution de l'Application :
-Exécutez le script app.py pour lancer l'application Flask.
-Accédez à l'application à l'adresse http://localhost:5000 dans votre navigateur.
-Soumission de Prédictions :
-Sur la page d'accueil, saisissez une chaîne SMILES dans le formulaire et cliquez sur le bouton "Predict".
-Les prédictions des deux modèles seront affichées sur la page.
-Personnalisation
-Personnalisez les fonctions make_prediction1 et make_prediction2 pour adapter les prédictions en fonction des besoins de votre modèle.
-Personnalisez l'interface utilisateur HTML en modifiant le fichier de modèle index.html .
-Personnalisez les routes ou ajoutez des fonctionnalités supplémentaires en fonction de vos besoins spécifiques.
+
 
 # III. MyFlaskApp - Packaging avec setup.py
 
@@ -202,8 +188,8 @@ Installation et Utilisation
 Pour exécuter cette application, suivez ces étapes :
 Cloner le projet :
 ```
-git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp-docker.git
-cd myflaskapp-docker
+git clone https://github.com/rabebkaabi/RabebKaabi_Servier
+cd myflaskapp/myflaskapp
 ```
 Rabeb Kaabi 
 Construction de l'image Docker :
