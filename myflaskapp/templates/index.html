@@ -16,6 +16,10 @@
         <p>Prediction Results:</p>
         <p>Model 1 Prediction: <span id="prediction-model1">-</span></p>
         <p>Model 2 Prediction: <span id="prediction-model2">-</span></p>
+        <p>Model 3 Predictions:</p>
+        <ul id="model3-predictions">
+            <!-- Model 3 predictions will be displayed here -->
+        </ul>
     </div>
 
     <script>
@@ -23,6 +27,7 @@
         const smilesInput = document.getElementById('smiles-input');
         const predictionModel1 = document.getElementById('prediction-model1');
         const predictionModel2 = document.getElementById('prediction-model2');
+        const model3Predictions = document.getElementById('model3-predictions');
 
         predictButton.addEventListener('click', () => {
             const smile = smilesInput.value;
@@ -39,6 +44,16 @@
             .then(data => {
                 predictionModel1.textContent = data.prediction_model1;
                 predictionModel2.textContent = data.prediction_model2;
+
+                // Clear existing Model 3 predictions
+                model3Predictions.innerHTML = '';
+
+                // Display Model 3 predictions
+                for (const prop in data.prediction_model3) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Property ${prop}: ${data.prediction_model3[prop]}`;
+                    model3Predictions.appendChild(listItem);
+                }
             });
         });
     </script>

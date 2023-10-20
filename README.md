@@ -15,7 +15,19 @@ Le script a les objectifs suivants :
 -Définit et entraîne Modèle1, qui est un modèle de réseau neuronal.
 -Évalue le Modèle1 entraîné.
 -Sauvegarde le Modèle1 entraîné dans un fichier.
+Modèle 1 :
 
+model1 = keras.Sequential([
+    layers.Input(shape=(2048,)),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+Ce modèle est entrainé sur data/single_dataset
+Entrèe : Le modèle prend en entrée un vecteur de forme (2048,)(les caractéristiques extraites de chaque molécule ont une longueur de 2048) . Ces caractéristiques sont extraites à l'aide de la méthode Morgan Fingerprint, qui est  utilisée pour la représentation des molécules.
+
+ Le modèle utilise une architecture simple avec une couche dense de 64 unités suivie d'une couche de sortie avec une seule unité (car il s'agit d'une tâche de classification binaire: la prédiction d'une propriété binaire). La fonction d'activation utilisée dans la couche dense est ReLU  pour introduire de la non-linéarité, et la dernière couche utilise une activation sigmoïde pour la classification binaire.
+
+Le modèle est compilé avec l'optimiseur Adam et la perte binaire_crossentropy. Cela indique que le modèle est formé pour la classification binaire en minimisant la perte de perte logistique.
 ## 2. Entraînement de Modèle2 :
 
 -Convertit les chaînes SMILES en séquences d'entrée encodées en one-hot.
@@ -25,7 +37,38 @@ Le script a les objectifs suivants :
 -Sauvegarde le Modèle2 entraîné dans un fichier.
 -Exécution de l'Application Flask :
 Le script est exécuté en tant que partie de l'application Flask, rendant les modèles entraînés disponibles pour des prédictions via des points d'API.
-## 3.Utilisation: 
+Modèle 2 :
+Ce modèle est entrainé sur data/single_dataset
+model2 = keras.Sequential([
+    layers.Input(shape=(YOUR_INPUT_SHAPE, YOUR_VOCAB_SIZE)),
+    layers.LSTM(64),
+    layers.Dense(1, activation='sigmoid')
+])
+
+Input Shape : Le modèle prend en entrée une séquence de forme (50, 30), ce qui suggère que le modèle est conçu pour prendre en compte la séquence de caractères (SMILES) des molécules. 
+
+ Le modèle utilise une couche LSTM (Long Short-Term Memory), une couche récurrente, pour prendre en compte les dépendances séquentielles dans la représentation des molécules. La couche LSTM a 64 unités, ce qui peut capturer des motifs complexes dans les séquences. La dernière couche est similaire au modèle 1, avec une seule unité d'activation sigmoïde pour la classification binaire.
+
+ Le modèle est également compilé pour la classification binaire avec l'optimiseur Adam et la perte binaire_crossentropy.
+ ## 3. Entraînement de Modèle3 :
+ Modèle 3 :
+
+
+model3 = keras.Sequential([
+    layers.Input(shape=(2048,)),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+
+Ce modèle est entrainé sur data/multi_dataset
+Chaque modèle dans l'ensemble "Modèle 3" suit une architecture similaire à celle du "Modèle 1", avec une seule unité de sortie utilisant une activation sigmoïde. Cela signifie que chaque modèle génère une prédiction binaire indépendante pour sa propriété respective.
+Le modèle 3  est entraîné pour chaque propriété de molécule individuelle (P1, P2, etc.), ce qui signifie qu'il y a un modèle distinct pour chaque propriété.Le modèle est compilé pour la classification binaire, ce qui suggère que chaque modèle de propriété est formé pour prédire une propriété binaire spécifique.
+
+Justification globale :
+
+Les choix de ces modèles sont adaptés aux tâches de prédiction de propriétés de molécules de médicaments. Le modèle 1 capture les caractéristiques moléculaires globales, tandis que le modèle 2 prend en compte les dépendances séquentielles dans la structure des molécules en utilisant une couche LSTM. Le modèle 3 est répété pour chaque propriété de molécule, ce qui permet de former un modèle distinct pour chaque propriété. Ces choix de modèles dépendent des caractéristiques de jeu de données et des tâches de prédiction spécifiques. 
+
+## 4.Utilisation: 
 Pour utiliser ce script, suivez ces étapes :
 Préparation des Données :
 Préparez l' ensemble de données dans un fichier CSV (par exemple, dataset_single.csv).
@@ -36,6 +79,44 @@ Modifiez les hyperparamètres ou l'architecture du modèle selon vos besoins dan
 Entraînement de Modèle2 :
 Entraînez Modèle2 en utilisant des séquences encodées en one-hot de chaînes SMILES.
 Modifiez les hyperparamètres ou l'architecture du modèle selon vos besoins dans le script.
+
+## 5.Evaluation: 
+Pour déterminer le meilleur modèle parmi les trois (Modèle 1, Modèle 2 et Modèle 3), nous pouvons nous baser sur plusieurs métriques de performance, telles que la perte de test et la précision. Voici les résultats des métriques pour chaque modèle :
+Modèle 1:
+
+Test loss: 0.9015
+Test accuracy: 0.7640
+Modèle 2:
+
+Test loss: 0.4660
+Test accuracy: 0.7907
+Modèle 3:
+
+Test loss pour P1: 0.9283
+Test accuracy pour P1: 0.7747
+Test loss pour P2: 0.7563
+Test accuracy pour P2: 0.7720
+Test loss pour P3: 0.7496
+Test accuracy pour P3: 0.7947
+Test loss pour P4: 0.8751
+Test accuracy pour P4: 0.7707
+Test loss pour P5: 0.6514
+Test accuracy pour P5: 0.8293
+Test loss pour P6: 0.8444
+Test accuracy pour P6: 0.8040
+Test loss pour P7: 0.8437
+Test accuracy pour P7: 0.7693
+Test loss pour P8: 0.7224
+Test accuracy pour P8: 0.8053
+Test loss pour P9: 0.7178
+Test accuracy pour P9: 0.8213
+La justification pour choisir le meilleur modèle dépendra de l'importance relative de la précision par rapport à la perte:
+
+Si on privilégie la précision, alors Modèle 3 pour la Propriété P5 est le meilleur avec une précision de 0.8293, suivie de Modèle 2 avec une précision de 0.7907. Modèle 3 pour P5 a la meilleure précision globale.
+
+Si on accorde de l'importance à la perte de test (plus faible est meilleure), Modèle 2 a la plus faible perte de test générale, suivie de Modèle 3 pour P5. Cela signifie que Modèle 2 produit des prédictions globalement plus proches des étiquettes de test.
+
+Si on cherche un équilibre entre la précision et la perte de test, alors Modèle 3 pour P5 semble être un choix solide, car il a la meilleure précision tout en maintenant une perte de test raisonnable.
 
 # II. Exécution de l'Application Flask :
 
@@ -99,8 +180,8 @@ Pour évaluer un modèle, utilisez la commande suivante :
 servier evaluate <vos arguments>
 Installation
 ```
-git clone https://github.com/rabebkaabi/RabebKaabi_Servier/myflaskapp.git
-cd myflaskapp
+git clone https://github.com/rabebkaabi/RabebKaabi_Servier
+cd RabebKaabi_Servier
 pip install .
 ```
 Prédiction
